@@ -28,9 +28,10 @@
             <div class="inner">
               <h3 class="masthead-brand">PupperPander</h3>
               <nav class="nav nav-masthead">
-                <a class="nav-link active" href="#">Home</a>
-                <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="#">Sign-in</a>
-              </nav>
+		<% for(let i of ["Home", "Features", "Sign-in"]){%>
+			<a class="nav-link<%- i.toLowerCase()==pagename?" active":""; %>" href="<%-i.toLowerCase();%>">
+				<%= i;%>
+			</a>
+		<% }%>
             </div>
           </div>
