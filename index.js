@@ -118,5 +118,5 @@ app.get("/*", function(req, res){
 });
 
 app.listen(80, function() {
-	console.log("Blog server running...");
+	console.log("Pupper server running...");
 });
