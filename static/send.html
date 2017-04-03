@@ -2,16 +2,19 @@
 <html>
 <head><title>Send</title></head>
 <body>
+[send to server/dashboard]<br>
 <script src="peer.js"></script>
 <script src="commonrtc.js"></script>
 <script>
-var peer = new Peer('pupper',peerjs_data);
+var id = "pup"+Math.floor(Math.random()*1000);
+console.log("Connecting as <code>"+id+"</code><br>");
+var peer = new Peer(id,peerjs_data);
+console.log("Registered ID..<br>");
 
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(stream){
   var call = peer.call('human', stream);
   call.on('stream', function(remoteStream) {
-    // Show stream in some video/canvas element.
   });
 }, function(err) {
   console.log('Failed to get local stream' ,err);
