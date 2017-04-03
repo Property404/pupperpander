@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+        <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -80,7 +80,24 @@
         </main>
       </div>
     </div>
-
+    <script src="/static/peer.js"></script>
+    <script src="/static/commonrtc.js"></script>
+    <script>
+   var video = document.getElementById("player");
+var peer = new Peer('human',peerjs_data);
+peer.on('call', function(call) {
+navigator.mediaDevices.getUserMedia(constraints)
+.then(function(stream){
+    call.answer(stream); // Answer the call with an A/V stream.
+    call.on('stream', function(remoteStream) {
+        console.log(remoteStream);
+        video.src = window.URL.createObjectURL(remoteStream);
+    });
+  }, function(err) {
+    console.log('Failed to get local stream' ,err);
+  });
+}); 
+</script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

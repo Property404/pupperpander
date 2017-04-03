@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head><title>Send</title></head>
+<body>
+<script src="peer.js"></script>
+<script src="commonrtc.js"></script>
+<script>
+var peer = new Peer('pupper',peerjs_data);
+
+navigator.mediaDevices.getUserMedia(constraints)
+.then(function(stream){
+  var call = peer.call('human', stream);
+  call.on('stream', function(remoteStream) {
+    // Show stream in some video/canvas element.
+  });
+}, function(err) {
+  console.log('Failed to get local stream' ,err);
+});
+</script>
+</body>
+</html>
+

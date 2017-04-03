@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head><title>Receive</title></head>
+<body>
+<h1>Receive Some Shit</h1>
+<video autoplay="true" id="cam">
+oh
+</video>
+<script src="peer.js"></script>
+<script src="commonrtc.js"></script>
+<script>
+var video = document.getElementById("cam");
+var peer = new Peer('human',peerjs_data);
+peer.on('call', function(call) {
+navigator.mediaDevices.getUserMedia(constraints)
+.then(function(stream){
+    call.answer(stream); // Answer the call with an A/V stream.
+    call.on('stream', function(remoteStream) {
+	console.log(remoteStream);
+	video.src = window.URL.createObjectURL(remoteStream);
+    });
+  }, function(err) {
+    console.log('Failed to get local stream' ,err);
+  });
+});
+</script>
+</body>
+</html>
+
